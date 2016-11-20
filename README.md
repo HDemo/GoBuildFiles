@@ -1,2 +1,1 @@
-# xieyanke.github.io
-The last blog
+# Go Project Build file
