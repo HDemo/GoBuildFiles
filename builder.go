@@ -37,7 +37,7 @@ func main() {
 	case "clean":
 		clean()
 	default:
-		log.Printf("Unknow command %s.\n", "")
+		log.Printf("Unknow command %s.\n", cmd)
 	}
 }
 
@@ -47,7 +47,7 @@ func clean() {
 }
 
 func build() {
-	log.Println("go building...")
+	log.Println("start building...")
 	args := []string{"build", "-ldflags", "-w -s"}
 
 	args = append(args, "-o", BINARY)
