@@ -14,28 +14,41 @@ var (
 	SOURCE_DIR = "./DemoSrc"
 )
 
+func init() {
+	if runtime.GOOS == "windows" {
+		BINARY += ".exe"
+	}
+}
+
 func main() {
 	log.Println("start building...")
 
 	flag.Parse()
-	if flag.NArg() < 1 {
+	if flag.NArg() != 1 {
 		log.Println("please use go run builder.go [ build | clean ] to build.")
 		return
 	}
-	for _, cmd := range flag.Args() {
-		switch cmd {
-		case "build":
-			build()
-		}
+
+	cmd := flag.Arg(0)
+	switch cmd {
+	case "build":
+		clean()
+		build()
+	case "clean":
+		clean()
+	default:
+		log.Printf("Unknow command %s.\n", "")
 	}
 }
 
-func build() {
-	args := []string{"build", "-ldflags", "-w -s"}
+func clean() {
+	log.Println("start cleaning...")
+	runCommand("rm", "-f", BINARY)
+}
 
-	if runtime.GOOS == "windows" {
-		BINARY += ".exe"
-	}
+func build() {
+	log.Println("go building...")
+	args := []string{"build", "-ldflags", "-w -s"}
 
 	args = append(args, "-o", BINARY)
 	args = append(args, SOURCE_DIR)
@@ -52,4 +65,3 @@ func runCommand(cmd string, args ...string) {
 		log.Println(err)
 	}
 }
-
