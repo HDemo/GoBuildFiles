@@ -52,3 +52,4 @@ func runCommand(cmd string, args ...string) {
 		log.Println(err)
 	}
 }
+
