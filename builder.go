@@ -19,7 +19,7 @@ func main() {
 
 	flag.Parse()
 	if flag.NArg() < 1 {
-		log.Println("please use go run build.go to buld.")
+		log.Println("please use go run builder.go [ build | clean ] to build.")
 		return
 	}
 	for _, cmd := range flag.Args() {
