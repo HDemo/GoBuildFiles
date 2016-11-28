@@ -37,7 +37,7 @@ func main() {
 	case "clean":
 		clean()
 	default:
-		log.Printf("Unknow command %s.\n", cmd)
+		log.Printf("Unknow command: %s.\n", cmd)
 	}
 }
 
