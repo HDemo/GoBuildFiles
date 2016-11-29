@@ -21,7 +21,6 @@ func init() {
 }
 
 func main() {
-	log.Println("start building...")
 
 	flag.Parse()
 	if flag.NArg() != 1 {
